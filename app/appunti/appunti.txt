@@ -1,0 +1,45 @@
+github
+https://github.com/yelocode/bootstrap5-twitter-clone-template/blob/main
+
+tutorial
+https://www.youtube.com/watch?v=Yug5vDnb6A8&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=34    minuto 27:30
+
+creare controller e model e migration
+php artisan make:model Comment -m -c
+
+crea anche
+php artisan make:migration create_follower_user_table --create
+
+Email
+php artisan make:mail WelcomeEmail
+mailtrap
+https://mailtrap.io/?gad_source=1&gclid=Cj0KCQjw6auyBhDzARIsALIo6v8GWlNv_y-ruFE_Q_B31ByKj2ybtY9Finhp8lMGQYpp9enLcHqr43waAl7vEALw_wcB
+https://mailtrap.io/inboxes/2897855/messages cerca vicino a cURL php laravel9+
+laravel documentation
+https://laravel.com/docs/11.x/mail#driver-prerequisites
+
+Laravel debugger
+https://github.com/barryvdh/laravel-debugbar
+composer require barryvdh/laravel-debugbar --dev
+
+con le risorse
+php artisan make controller UserController -r
+
+per creare un link alla cartella public per le immagini che si connette a storage/public
+php artisan storage:link
+
+php artisan migrate:refresh --step=2
+
+mt = margin top
+mb = margin bottom
+px-3: Imposta il padding orizzontale (sinistra e destra)
+pt-4: Imposta il padding superiore (top)
+pb-2: Imposta il padding inferiore (bottom)
+
+bootstrapwatch
+https://bootswatch.com/
+modifica in layout.blade solo il termine
+    <link href="https://bootswatch.com/5/****modifica_questo******/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+
+
