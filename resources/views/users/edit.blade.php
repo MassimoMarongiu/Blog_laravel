@@ -29,7 +29,7 @@
             {{-- right navbar --}}
             <div class="col-3">
                 @include('shared.search_box')
-                @include('shared.follow_box')
+                @include('messages.shared.follow_box')
             </div>
         </div>
     </div>

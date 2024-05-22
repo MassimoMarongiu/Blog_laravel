@@ -30,7 +30,8 @@ class AuthController extends Controller
         if(auth()->attempt($validated)){
             request()->session()->regenerate();
 
-            return redirect()->route("dashboard")->with("success","Logged successfully!");
+            return redirect()->route("")->with("success","Logged successfully!");
+            // return redirect()->route("dashboard")->with("success","Logged successfully!");
         };
         return redirect()->route("login")->withErrors([
             "email"=> "No matching credentials found"
@@ -63,7 +64,8 @@ class AuthController extends Controller
         Mail::to($user->email)->send(new WelcomeEmail($user));
 
         // redirect
-        return redirect()->route('dashboard')->with('success', 'Account created successfully!');
+        // return redirect()->route('dashboard')->with('success', 'Account created successfully!');
+        return redirect()->route('')->with('success', 'Account created successfully!');
     }
 
     //logout
@@ -73,7 +75,8 @@ class AuthController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect()->route('dashboard')->with('success', 'Logout succeded successfully!');
+        // return redirect()->route('dashboard')->with('success', 'Logout succeded successfully!');
+        return redirect()->route('')->with('success', 'Logout succeded successfully!');
 
     }
 }

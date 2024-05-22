@@ -2,9 +2,9 @@ github
 https://github.com/yelocode/bootstrap5-twitter-clone-template/blob/main
 
 tutorial
-https://www.youtube.com/watch?v=Yug5vDnb6A8&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=34    minuto 27:30
+https://www.youtube.com/watch?v=wK-dtZyN8p0&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=38creare
 
-creare controller e model e migration
+controller e model e migration
 php artisan make:model Comment -m -c
 
 crea anche
@@ -39,7 +39,35 @@ pb-2: Imposta il padding inferiore (bottom)
 bootstrapwatch
 https://bootswatch.com/
 modifica in layout.blade solo il termine
-    <link href="https://bootswatch.com/5/****modifica_questo******/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://bootswatch.com/5/****modifica_questo******/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+per il login
+composer require laravel/breeze --dev
+php artisan breeze:install
+php artisan migrate
+npm install
+npm run dev
+
+php artisan make:controller FeedController --invokable
 
 
+Admin
+php artisan make:middleware EnsureUserIsAdmin
 
+per vedere delle informazioni
+php artisan tinker
+ad esempio
+per l'user numero 1
+User::find(1)
+per farlo diventare Admin
+$u = User::find(1)
+$u->is_admin = 1;
+$u->save()
+
+MassimoMarongiu/Blog_laravel.git
+git clone https://github.com/MassimoMarongiu/Blog_laravel.git
+git init
+git add .
+git commit -m "prima della creazione delle funzioni dell'admin"
+git remote add origin https://github.com/MassimoMarongiu/Blog_laravel.git
+git push origin main

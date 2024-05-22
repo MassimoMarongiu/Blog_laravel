@@ -11,7 +11,7 @@ class FollowerController extends Controller
 
         $follower=auth()->user();
         // add manytomany relationship
-        // followings dal model user.php
+        // followings dal model/user.php
 
         $follower->followings()->attach($user);
 

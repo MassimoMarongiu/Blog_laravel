@@ -24,6 +24,7 @@ class MessageController extends Controller
         if (auth()->id() != $message->user_id) {
             abort(404, "");
         }
+        
         $editing1 = true;
         return view("messages.show", compact('message', 'editing1'));
     }

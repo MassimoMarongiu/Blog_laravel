@@ -15,6 +15,10 @@
                     <span>Contenuti</span></a>
             </li> --}}
             <li class="nav-item">
+                <a class="nav-link" href="{{route('feed')}}">
+                    <span>Feed</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="{{(Route::is('terms')) ? 'text-white bg-primary rounded' : ''}} nav-link" href="{{route('terms')}}">
                     <span>Termini d'uso</span></a>
             </li>

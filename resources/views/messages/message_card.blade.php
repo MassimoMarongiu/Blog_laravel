@@ -55,9 +55,10 @@
           @include('messages.shared.like_button')
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
-                    {{ $message->created_at }} </span>
+                    {{ $message->created_at->diffForHumans() }} </span>
+                    {{-- {{ $message->created_at->toDateString() }} </span> --}}
             </div>
         </div>
-        @include('shared.comment_box')
+        @include('messages.shared.comment_box')
     </div>
 </div>
