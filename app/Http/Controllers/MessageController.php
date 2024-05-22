@@ -21,16 +21,20 @@ class MessageController extends Controller
     }
     public function edit(Message $message)
     {
-        if (auth()->id() != $message->user_id) {
-            abort(404, "");
-        }
-        
+        // if (auth()->id() != $message->user_id) {
+        //     abort(404, "");
+        // }
+        $this->authorize('message.edit',$message);
+
         $editing1 = true;
+
         return view("messages.show", compact('message', 'editing1'));
     }
 
     public function update(Message $message)
     {
+
+        $this->authorize('message.edit',$message);
 
         $validated = request()->validate([
             'content' => 'required|min:2|max:240',
@@ -66,12 +70,14 @@ class MessageController extends Controller
 
     public function destroy(Message $message)
     {
+        // if (auth()->id() != $message->user_id) {
+        //     abort(404, "");
+        // }
 
+        $this->authorize('message.delete',$message);
 
-        if (auth()->id() != $message->user_id) {
-            abort(404, "");
-        }
         $message->delete();
+
         return redirect()->route('dashboard')->with('success', 'Message deleted successfully!');
     }
     // public function destroy($id){
