@@ -4,19 +4,23 @@
             <form action="{{ route('messages.unlike', $message->id) }}" method="POST">
                 @csrf
                 <button type="submit" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                    </span> {{ $message->likes()->count() }} </button>
+                    {{-- </span> {{ $message->likes()->count() }} </button> --}}
+                </span> {{ $message->likes_count }} </button>
+
             </form>
         @else
             <form action="{{ route('messages.like', $message->id) }}" method="POST">
                 @csrf
                 <button type="submit" class="fw-light nav-link fs-6"> <span class="far fa-heart me-1">
-                    </span> {{ $message->likes()->count() }} </button>
+                    {{-- </span> {{ $message->likes()->count() }} </button> --}}
+                    </span> {{ $message->likes_count }} </button>
             </form>
         @endif
     @endauth
     @guest
         <a id="likebutton" class="fw-light nav-link fs-6"> <span class="far fa-heart me-1">
-            </span> {{ $message->likes()->count() }} </a>
+            {{-- </span> {{ $message->likes()->count() }} </a> --}}
+            </span> {{ $message->likes_count}} </a>
     @endguest
 </div>
 {{-- <script>

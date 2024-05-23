@@ -19,7 +19,7 @@ class DashboardController extends Controller
         // var_dump(Message::all());
         // dump(Message::all());
 
-        $messages= Message::orderBy('created_at','DESC');
+        $messages= Message::withCount('likes')->orderBy('created_at','DESC');
 
         if(request()->has('search')){
             $messages = $messages->where('content','like','%'.request()->get('search','').'%');

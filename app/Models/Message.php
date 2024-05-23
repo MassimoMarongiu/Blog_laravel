@@ -10,6 +10,9 @@ class Message extends Model
     use HasFactory;
 
     protected $with =['user:id,name,image','comments.user:id,name,image'];
+
+    protected $withCount = ['likes'];
+    
     protected $fillable = [
         'user_id',
         'content',

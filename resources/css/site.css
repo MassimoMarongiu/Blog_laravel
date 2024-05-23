@@ -1,4 +1,4 @@
-* {
+/* * {
     padding:0px;
     margin:0px;
     box-sizing: border-box;
@@ -12,9 +12,9 @@ a {
     text-decoration: none;
 }
 
-a:visited {color:#000;} /* Visited link    */
-a:hover {color:#000;}   /* Mouse over link */
-a:active {color:#000;}  /* Selected link   */
+a:visited {color:#000;}  Visited link
+a:hover {color:#000;}
+a:active {color:#000;}
 
 .btn-info {
     color: #000;
@@ -69,4 +69,4 @@ main {
 
 .grid-item img {
 	width: 100%;
-}
+} */

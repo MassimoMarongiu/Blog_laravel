@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('title',$user->name)
 @section('content')
     {{-- left navbar --}}
     <div class="container py-4">

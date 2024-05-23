@@ -2,8 +2,7 @@ github
 https://github.com/yelocode/bootstrap5-twitter-clone-template/blob/main
 
 tutorial
-https://www.youtube.com/watch?v=4pjjfKpPNSY&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=41controller e model e migration
-
+https://www.youtube.com/watch?v=az7m6LIEeTU&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=44
 
 php artisan make:model Comment -m -c
 

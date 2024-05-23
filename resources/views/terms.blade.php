@@ -1,4 +1,6 @@
 @extends('layout.layout')
+@section('title',"Terms")
+
 @section('content')
     <div class="row">
         <div class="col-3">
@@ -32,7 +34,6 @@
         <div class="col-3">
             @include('shared.search_box')
             @include('messages.shared.follow_box')
-
         </div>
     </div>
 @endsection

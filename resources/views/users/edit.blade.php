@@ -1,4 +1,6 @@
 @extends('layout.layout')
+@section('title',"Edit Profile")
+
 @section('content')
     {{-- left navbar --}}
     <div class="container py-4">

@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('title',"Dashboard")
 @section('content')
     {{-- navbar --}}
     {{-- @include('layout.navbar') --}}

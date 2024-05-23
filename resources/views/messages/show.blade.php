@@ -1,4 +1,6 @@
 @extends('layout.layout')
+@section('title',"View Message")
+
 @section('content')
     {{-- left navbar --}}
     {{-- <div class="container py-4"> --}}
