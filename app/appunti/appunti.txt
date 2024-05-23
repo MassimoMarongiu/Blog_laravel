@@ -2,9 +2,9 @@ github
 https://github.com/yelocode/bootstrap5-twitter-clone-template/blob/main
 
 tutorial
-https://www.youtube.com/watch?v=wK-dtZyN8p0&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=38creare
+https://www.youtube.com/watch?v=4pjjfKpPNSY&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=41controller e model e migration
 
-controller e model e migration
+
 php artisan make:model Comment -m -c
 
 crea anche
@@ -64,10 +64,10 @@ $u = User::find(1)
 $u->is_admin = 1;
 $u->save()
 
-MassimoMarongiu/Blog_laravel.git
-git clone https://github.com/MassimoMarongiu/Blog_laravel.git
-git init
-git add .
-git commit -m "prima della creazione delle funzioni dell'admin"
-git remote add origin https://github.com/MassimoMarongiu/Blog_laravel.git
-git push origin main
+dentro app/policies
+php artisan make:policy MessagePolicy --model=Message
+
+per spostare le richieste dei valori dal model a un altro file in app\http\request
+php artisan make:request User\UpdateUserRequest
+per esempio dal'user controller copiare dal metodo update i valori-> del profilo e dei messaggi
+

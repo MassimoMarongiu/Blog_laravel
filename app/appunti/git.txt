@@ -1,0 +1,21 @@
+MassimoMarongiu/Blog_laravel.git
+git clone https://github.com/MassimoMarongiu/Blog_laravel.git
+git init
+git add .
+git commit -m "prima della creazione delle funzioni dell'admin"
+git remote add origin https://github.com/MassimoMarongiu/Blog_laravel.git
+git push origin main
+
+second brach
+git branch second-branch    # Crea un nuovo branch
+git checkout second-branch  # Spostati nel nuovo branch
+# Oppure in un solo passaggio:
+git checkout -b second-branch  # Crea e spostati nel nuovo branch
+git add .   #Aggiungi i file modificati
+git commit -m "Descrizione delle modifiche"  #Esegui il commit delle modifiche:
+
+git push origin second-branch  # Pusha il nuovo branch su GitHub
+
+verifica i brach
+git branch
+

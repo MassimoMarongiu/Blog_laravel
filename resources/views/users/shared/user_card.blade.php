@@ -2,52 +2,52 @@
     <div class="px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img style="width:150px" class="me-3 avatar-sm rounded-circle"
-                src="{{$user->getImageURL()}}"
+                <img style="width:150px" class="me-3 avatar-sm rounded-circle" src="{{ $user->getImageURL() }}"
                     alt="{{ $user->name }}">
             </div>
         </div>
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center flex-column">
-                    <div>
-                        <h3 class="card-title mb-0"><a href="#">{{ $user->name }}<span
-                                    class="fs-6 text-muted"></span> </a>
-                        </h3>
-                    </div>
-                    <div>
-                        <h3 class="card-title mb-0"><a href="#"><span
-                                    class="fs-6 text-muted">{{ $user->email }}</span> </a>
-                        </h3>
-                    </div>
-                    @auth
-                        @if (Auth::id() === $user->id)
-                                <button type="button" class="btn btn-info float-end" ><a
-                                        href="{{ route('users.edit', $user->id) }}">Modifica</a></button>
-                        @endif
-                    @endauth
+                <div>
+                    <h3 class="card-title mb-0"><a href="#">{{ $user->name }}<span
+                                class="fs-6 text-muted"></span> </a>
+                    </h3>
+                </div>
+                <div>
+                    <h3 class="card-title mb-0"><a href="#"><span
+                                class="fs-6 text-muted">{{ $user->email }}</span> </a>
+                    </h3>
+                </div>
             </div>
+            {{-- @auth --}}
+                {{-- @if (Auth::id() === $user->id) --}}
+                @can('update', $user)
+                    <button type="button" class="btn btn-info float-end"><a
+                            href="{{ route('users.edit', $user->id) }}">Modifica</a></button>
+                @endcan
+                {{-- @endif --}}
+            {{-- @endauth --}}
         </div>
-             <div class="px-2 mt-4">
+        <div class="px-2 mt-4">
             <h5 class="fs-5">Biografia:</h5>
             <p class="fs-6 fw-light">
-               {{$user->bio}}
+                {{ $user->bio }}
             </p>
             @include('users.shared.user_stats')
             @auth
-                @if (Auth::id() !== $user->id)
+                {{-- @if (Auth::id() !== $user->id) --}}
+                @if (Auth::user()->isNot( $user))
                     <div class="mt-3">
                         @if (Auth::user()->follows($user))
-
-                        <form method="POST" action="{{route('users.unfollow',$user->id)}}">
-                            @csrf
-                            <button type="submit" class="btn btn-danger btn-sm"> Unfollow </button>
-                        </form>
+                            <form method="POST" action="{{ route('users.unfollow', $user->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm"> Unfollow </button>
+                            </form>
                         @else
-
-                        <form method="POST" action="{{route('users.follow',$user->id)}}">
-                            @csrf
-                            <button type="submit" class="btn btn-primary btn-sm"> Follow </button>
-                        </form>
+                            <form method="POST" action="{{ route('users.follow', $user->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary btn-sm"> Follow </button>
+                            </form>
                         @endif
                     </div>
                 @endif

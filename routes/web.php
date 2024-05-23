@@ -94,6 +94,9 @@ require __DIR__ . '/auth.php';
 // cambia da kernel.php  protected $routeMiddleware = [
 // Route::get('/admin',[AdminDashboardController::class,'index'])->name('admin.dashboard')->middleware(['auth','admin']);
 
-// ADMIN 
+// ADMIN
 // da kernel metodo routeMiddleware da can
+// vedi providers/authserviceprovider per il gate
 Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'can:admin']);
+
+Route::post('logout', [AuthController::class, 'logout'])->middleware(('auth'))->name('logout');

@@ -65,7 +65,7 @@ class AuthController extends Controller
 
         // redirect
         // return redirect()->route('dashboard')->with('success', 'Account created successfully!');
-        return redirect()->route('')->with('success', 'Account created successfully!');
+        return redirect()->route('/')->with('success', 'Account created successfully!');
     }
 
     //logout
@@ -76,7 +76,7 @@ class AuthController extends Controller
         request()->session()->regenerateToken();
 
         // return redirect()->route('dashboard')->with('success', 'Logout succeded successfully!');
-        return redirect()->route('')->with('success', 'Logout succeded successfully!');
+        return redirect()->route('/')->with('success', 'Logout succeded successfully!');
 
     }
 }

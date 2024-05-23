@@ -11,15 +11,14 @@
                         </a></h5>
                 </div>
             </div>
-            <div class="d-flex">
+            {{-- <div class="ms-3 col"> --}}
+            <div class="ms-3 col">
                 <button class="btn btn-success btn-sm mb-1 ms-1 float-end">
                     <a href="{{ route('messages.show', $message->id) }}">Visualizza</a>
                 </button>
-                {{-- <div class="ms-3 col"> --}}
-
-                {{-- @if (Auth::user()->is_admin == 1 || Auth::id() === $message->user_id) --}}
                 @auth
-                    @can('message.edit', $message)
+                    {{-- @can('message.edit', $message) --}}
+                    @can('update', $message)
                         <form action="{{ route('messages.destroy', $message->id) }}" method="POST">
                             @csrf
                             @method('delete')
@@ -27,7 +26,6 @@
                             <button class="btn btn-info btn-sm mb-1 ms-1 float-end">
                                 <a href="{{ route('messages.edit', $message->id) }}">Modifica</a>
                             </button>
-
                         </form>
                     @endcan
                 @endauth

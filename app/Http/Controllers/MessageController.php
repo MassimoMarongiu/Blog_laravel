@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateMessageRequest;
+use App\Http\Requests\UpdateMessageRequest;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
@@ -24,36 +26,45 @@ class MessageController extends Controller
         // if (auth()->id() != $message->user_id) {
         //     abort(404, "");
         // }
-        $this->authorize('message.edit',$message);
+        $this->authorize('update', $message); //cambiato da policies/messagePolicy
+        // $this->authorize('message.edit',$message);
 
         $editing1 = true;
 
         return view("messages.show", compact('message', 'editing1'));
     }
 
-    public function update(Message $message)
+    public function update(UpdateMessageRequest $request,Message $message)
     {
+        //cambiato da policies/messagePolicy
+        $this->authorize('update', $message);
+        // $this->authorize('message.edit',$message);
 
-        $this->authorize('message.edit',$message);
-
-        $validated = request()->validate([
-            'content' => 'required|min:2|max:240',
-        ]);
+        // cambiato da updatemessageRequest
+        $validated = $request->validated();
+        // $validated = request()->validate([
+        //     'content' => 'required|min:2|max:240',
+        // ]);
         $message->update($validated);
         // $message ->content= request()->get('content','');
         // $message->save();
         return redirect()->route('messages.show', $message->id)->with('success', 'Message update successfully!');
     }
 
-    public function store()
+    public function store(CreateMessageRequest $request)
+    // public function store()
     {
         //    dump(request());
         // dump(request()->get('message',''));
 
         // se non scrivo nulla nella form messaggio errore
-        $validated = request()->validate([
-            "content" => "required|min:2|max:240",
-        ]);
+
+        // cambiato da createmessageRequest
+
+        $validated=$request->validated();
+        // $validated = request()->validate([
+        //     "content" => "required|min:2|max:240",
+        // ]);
 
         $validated['user_id'] = auth()->user()->id;
 
@@ -74,7 +85,8 @@ class MessageController extends Controller
         //     abort(404, "");
         // }
 
-        $this->authorize('message.delete',$message);
+        $this->authorize('delete', $message); //cambiato da policies/messagePolicy
+        // $this->authorize('message.delete',$message);
 
         $message->delete();
 
