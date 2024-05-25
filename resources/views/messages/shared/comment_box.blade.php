@@ -5,7 +5,7 @@
             <textarea name="content" class="fs-6 form-control" rows="1"></textarea>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary btn-sm"> Scrivi un commento </button>
+            <button type="submit" class="btn btn-primary btn-sm"> @lang('message.write_comment') </button>
             @error('content')
                 <span class="d-block fs-6 text-danger mt-2">{{ $message }}</span>
             @enderror

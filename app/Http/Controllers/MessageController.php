@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -34,7 +35,7 @@ class MessageController extends Controller
         return view("messages.show", compact('message', 'editing1'));
     }
 
-    public function update(UpdateMessageRequest $request,Message $message)
+    public function update(UpdateMessageRequest $request, Message $message)
     {
         //cambiato da policies/messagePolicy
         $this->authorize('update', $message);
@@ -61,7 +62,7 @@ class MessageController extends Controller
 
         // cambiato da createmessageRequest
 
-        $validated=$request->validated();
+        $validated = $request->validated();
         // $validated = request()->validate([
         //     "content" => "required|min:2|max:240",
         // ]);

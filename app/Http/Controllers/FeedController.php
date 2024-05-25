@@ -30,7 +30,9 @@ class FeedController extends Controller
         // $messages= Message::orderBy('created_at','DESC');
 
         if(request()->has('search')){
-            $messages = $messages->where('content','like','%'.request()->get('search','').'%');
+            // $messages = $messages->where('content','like','%'.request()->get('search','').'%');
+             // connettendolo con il model message
+            $messages = $messages->search(request('search',''));
         }
 
         // Comment::where('message_id',12)->get();

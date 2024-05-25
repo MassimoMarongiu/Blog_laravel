@@ -14,7 +14,7 @@
             {{-- <div class="ms-3 col"> --}}
             <div class="ms-3 col">
                 <button class="btn btn-success btn-sm mb-1 ms-1 float-end">
-                    <a href="{{ route('messages.show', $message->id) }}">Visualizza</a>
+                    <a href="{{ route('messages.show', $message->id) }}">@lang('message.view')</a>
                 </button>
                 @auth
                     {{-- @can('message.edit', $message) --}}
@@ -22,9 +22,9 @@
                         <form action="{{ route('messages.destroy', $message->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger btn-sm float-end ms-1"> Elimina </button>
+                            <button class="btn btn-danger btn-sm float-end ms-1"> @lang('message.delete') </button>
                             <button class="btn btn-info btn-sm mb-1 ms-1 float-end">
-                                <a href="{{ route('messages.edit', $message->id) }}">Modifica</a>
+                                <a href="{{ route('messages.edit', $message->id) }}">@lang('message.modify')</a>
                             </button>
                         </form>
                     @endcan
@@ -47,7 +47,7 @@
                     @enderror
                 </div>
                 <div class="">
-                    <button type="submit" class="btn btn-dark mb-2"> Aggiorna </button>
+                    <button type="submit" class="btn btn-dark mb-2"> @lang('message.update_btn') </button>
                 </div>
             </form>
         @else

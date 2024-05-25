@@ -6,9 +6,12 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\Admin\MessageController as AdminMessageController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\MessageLikeController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -23,13 +26,25 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// da app/serviceprovider/ metodo boot
+//per settare la lingua vedi middleware/setlocale.php e providers/appserviceprovider
+// settati dal kernel in middlewaregroups
+// cedi app/http/middleware/setlocale
+//vedi config/app.php
+Route::get('lang/{lang}', function($lang) {
+    // dd($lang);
+    app()->setLocale($lang);
+    session()->put('locale', $lang);
+   return redirect()->route('dashboard');
+})->name('lang');
+
+//definito da route service provider
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+// Route::get('/welcome', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/terms', function () {
     return view('terms');
 })->name('terms');
-
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/welcome', [DashboardController::class, 'index'])->name('dashboard');
 
 // route grouping
 // Route::group(['prefix'=>'messages/','as'=>'messages.'], function () {
@@ -97,6 +112,12 @@ require __DIR__ . '/auth.php';
 // ADMIN
 // da kernel metodo routeMiddleware da can
 // vedi providers/authserviceprovider per il gate
-Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'can:admin']);
 
+// Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware(['auth', 'can:admin']);
+Route::middleware(['auth', 'can:admin'])->prefix('/admin')->as('admin.')->group(function () {
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::resource('users', AdminUserController::class)->only('index');
+    Route::resource('messages', AdminMessageController::class)->only('index');
+    Route::resource('comments', AdminCommentController::class)->only('index','destroy');
+});
 Route::post('logout', [AuthController::class, 'logout'])->middleware(('auth'))->name('logout');

@@ -1,5 +1,6 @@
 @auth
-    <h4> Scrivi un messaggio </h4>
+    <h4> @lang('message.logged_to_share') </h4>
+
 <div class="row">
     <form action="{{route('messages.store')}}" method="POST">
         @csrf
@@ -19,6 +20,9 @@
 </div>
 @endauth
 @guest
-    <h4>Accedi per scrivere un commento</h4>
+{{-- __ oppure trans  oppure @lang serve per entrare in lang --}}
+    <h4>@lang('message.login_to_share')</h4>
+    {{-- <h4>{{trans('message.login_to_share')}}</h4> --}}
+    {{-- <h4>{{__('message.login_to_share')}}</h4> --}}
 @endguest
 

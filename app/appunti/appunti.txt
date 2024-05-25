@@ -2,9 +2,7 @@ github
 https://github.com/yelocode/bootstrap5-twitter-clone-template/blob/main
 
 tutorial
-https://www.youtube.com/watch?v=az7m6LIEeTU&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=44
-
-php artisan make:model Comment -m -c
+https://www.youtube.com/watch?v=3ge_jMro4qg&list=PLqDySLfPKRn5d7WbN9R0yJA9IRgx-XBlU&index=51php artisan make:model Comment -m -c
 
 crea anche
 php artisan make:migration create_follower_user_table --create
@@ -34,6 +32,8 @@ mb = margin bottom
 px-3: Imposta il padding orizzontale (sinistra e destra)
 pt-4: Imposta il padding superiore (top)
 pb-2: Imposta il padding inferiore (bottom)
+fw font weigth
+fs font size
 
 bootstrapwatch
 https://bootswatch.com/
@@ -69,4 +69,20 @@ php artisan make:policy MessagePolicy --model=Message
 per spostare le richieste dei valori dal model a un altro file in app\http\request
 php artisan make:request User\UpdateUserRequest
 per esempio dal'user controller copiare dal metodo update i valori-> del profilo e dei messaggi
+
+linguaggio dinamico app/lang per esempio in message
+__ oppure trans  oppure @lang serve per entrare in lang
+<h4>@lang('message.login_to_share')</h4>
+<h4>{{trans('message.login_to_share')}}</h4>
+<h4>{{__('message.login_to_share')}}</h4>
+per cambiare la lingua dei messaggi di default vai in config/app e cambia lingua in locale
+'locale'=>'it'
+
+php artisan make:middleware SetLocale
+
+variabili globali ->appservicecontroller
+
+per pulire la cache
+php artisan cache:clear
+
 
